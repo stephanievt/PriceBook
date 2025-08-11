@@ -1,0 +1,67 @@
+-- CATEGORY
+INSERT INTO Category (Name)
+VALUES ('Produce')
+DECLARE @@catId INT = IDENT_CURRENT('Category')
+INSERT INTO Category (Name)
+VALUES ('Baked Goods')
+INSERT INTO Category (Name)
+VALUES ('Meat/Seafood')
+INSERT INTO Category (Name)
+VALUES ('Dairy')
+INSERT INTO Category (Name)
+VALUES ('Cheese')
+INSERT INTO Category (Name)
+VALUES ('Frozen Foods')
+INSERT INTO Category (Name)
+VALUES ('Canned Goods')
+INSERT INTO Category (Name)
+VALUES ('Grains and Cereals')
+INSERT INTO Category (Name)
+VALUES ('Snacks')
+INSERT INTO Category (Name)
+VALUES ('Beverages')
+INSERT INTO Category (Name)
+VALUES ('Baking, spices and condiments')
+INSERT INTO Category (Name)
+VALUES ('Household and Cleaning Supplies')
+INSERT INTO Category (Name)
+VALUES ('Personal Care')
+INSERT INTO Category (Name)
+VALUES ('Health Care')
+INSERT INTO Category (Name)
+VALUES ('Other')
+
+-- Stores
+INSERT INTO Store (Name, Address, City, State)
+VALUES ('Star Market', '699 Mt Auburn St', 'Cambridge', 'MA')
+DECLARE @@storeId INT = IDENT_CURRENT('Store')
+-- Unit Type
+INSERT  INTO UnitType (Name)
+VALUES ('Weight')
+DECLARE @@weightId INT = IDENT_CURRENT('UnitType')
+INSERT INTO UnitType (Name)
+VALUES ('Volume')
+DECLARE @@volumeId INT = IDENT_CURRENT('UnitType')
+
+INSERT INTO UnitType (Name)
+VALUES ('Count')
+DECLARE @@countId INT = IDENT_CURRENT('UnitType')
+
+-- Units
+INSERT INTO Unit (UnitTypeId, Name, DefaultForType)
+VALUES (@@weightId, 'Gram', 1)
+INSERT INTO Unit (UnitTypeId, Name, DefaultForType)
+VALUES (@@volumeId, 'ml', 1)
+DECLARE @@unitId INT = IDENT_CURRENT('Unit')
+INSERT INTO Unit (UnitTypeId, Name, DefaultForType)
+VALUES (@@countId, 'Single', 1)
+
+
+
+-- A single Item
+INSERT INTO Item (CategoryId, Name)
+VALUES (@@catId, 'Spinach')
+DECLARE @@itemId INT = IDENT_CURRENT('Item')
+-- An Item Cost Record
+INSERT INTO ItemCostRecord(ItemId, StoreId, UnitId, BuyDate, Price)
+VALUES(@@itemId, @@storeId, @@unitId, GETDATE(), 0)

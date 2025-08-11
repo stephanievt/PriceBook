@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Dev\PriceBook\PriceBook_Data\Category.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+// ReSharper disable EntityFramework.NPlusOne.IncompleteDataQuery
+// ReSharper disable EntityFramework.NPlusOne.IncompleteDataUsage
+
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
+
+namespace PriceBook_Data
+{
+    
+    public class Category
+    {
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [MaxLength(70)]
+        public string Name { get; set; }
+
+        public List&lt;Item&gt; Items { get; set; }
+
+        
+        [NotMapped]
+        public bool IsAttached { get; internal set; }
+        public Category()
+        {
+
+        }
+
+        public Category(string name, bool loadAllItems = false)
+        {
+            ApplicationContext context = new ApplicationContext();
+            Category cat;
+            if (loadAllItems)
+            {
+                cat = context.Category.Include(cat =&gt; cat.Items).FirstOrDefault(n =&gt; n.Name == name);
+            }
+            else
+            {
+                cat = context.Category
+                    .FirstOrDefault(n =&gt; n.Name == name);
+            }
+                        
+            if (cat == null) return;
+
+            this.Id = cat.Id;
+            this.Name = cat.Name;
+            this.IsAttached = true;
+            this.Items = cat.Items;
+
+        }
+
+        public Category(int id)
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                var cat = context.Category
+                    .FirstOrDefault(i =&gt; i.Id == id);
+                if (cat == null) return;
+                this.Id = cat.Id;
+                this.Name = cat.Name;
+                this.IsAttached = true;
+            }
+        }
+
+        public void Add()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                context.Category.Add(this);
+                context.SaveChanges();
+            }
+        }
+
+        public void Delete()
+        {
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                context.Category.Attach(this);
+                context.Category.Remove(this);
+                context.SaveChanges();
+            }
+
+        }
+
+        public void SaveUpdate(bool modified = false)
+        {
+
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                context.Category.Attach(this);
+                if (modified) context.Entry(this).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+
+        }
+
+        public bool Equals(Category compare)
+        {
+            if (this.Id != compare.Id) return false;
+            if (this.Name != compare.Name) return false;
+            return true;
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,25,16,29,1],[16,30,16,34,1],[19,30,19,34,1],[19,35,19,39,1],[21,35,21,39,1],[21,40,21,44,1],[25,34,25,38,1],[25,39,25,52,1],[26,9,26,26,1],[27,9,27,10,1],[29,9,29,10,1],[31,9,31,64,1],[32,9,32,10,1],[33,13,33,67,1],[35,13,35,30,1],[36,13,36,14,1],[37,17,37,102,1],[38,13,38,14,1],[40,13,40,14,1],[41,17,42,58,1],[43,13,43,14,1],[45,13,45,29,1],[45,30,45,37,1],[47,13,47,30,1],[48,13,48,34,1],[49,13,49,36,1],[50,13,50,36,1],[52,9,52,10,1],[54,9,54,32,1],[55,9,55,10,1],[56,20,56,73,1],[57,13,57,14,1],[58,17,59,54,1],[60,17,60,33,1],[60,34,60,41,1],[61,17,61,34,1],[62,17,62,38,1],[63,17,63,40,1],[64,13,64,14,1],[65,9,65,10,1],[68,9,68,10,1],[69,20,69,73,1],[70,13,70,14,1],[71,17,71,44,1],[72,17,72,39,1],[73,13,73,14,1],[74,9,74,10,1],[77,9,77,10,1],[78,20,78,73,1],[79,13,79,14,1],[80,17,80,47,1],[81,17,81,47,1],[82,17,82,39,1],[83,13,83,14,1],[85,9,85,10,1],[88,9,88,10,1],[90,20,90,73,1],[91,13,91,14,1],[92,17,92,47,1],[93,17,93,30,1],[93,31,93,80,1],[94,17,94,39,1],[95,13,95,14,1],[97,9,97,10,1],[100,9,100,10,1],[101,13,101,39,1],[101,40,101,53,1],[102,13,102,43,1],[102,44,102,57,1],[103,13,103,25,1],[104,9,104,10,1]]);
+    </script>
+  </body>
+</html>

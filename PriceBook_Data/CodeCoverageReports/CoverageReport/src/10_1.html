@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\dev\PriceBook\PriceBook_Data\ApplicationContext.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.EntityFrameworkCore;
+
+namespace PriceBook_Data
+{
+    internal class ApplicationContext : DbContext
+    {
+        public DbSet&lt;Store&gt; Store { get; set; }
+
+        public DbSet&lt;Unit&gt; Unit { get; set; }
+
+        public DbSet&lt;UnitType&gt; UnitType { get; set; }
+
+        public DbSet&lt;Item&gt; Item { get; set; }
+
+        public DbSet&lt;Category&gt; Category { get; set; }
+
+        public DbSet&lt;ItemCostRecord&gt; ItemCostRecord { get; set; }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            Settings settings = new Settings();
+            optionsBuilder.UseSqlServer(settings.ConnectionString);
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // SCHEMA
+            modelBuilder.Entity&lt;Item&gt;()
+                .HasIndex(i =&gt; new { i.Name })
+                .IsUnique();
+            modelBuilder.Entity&lt;Category&gt;()
+                .HasIndex(c =&gt; new { c.Name })
+                .IsUnique();
+            modelBuilder.Entity&lt;Store&gt;()
+                .HasIndex(s =&gt; s.Name)
+                .IsUnique();
+            modelBuilder.Entity&lt;UnitType&gt;().HasIndex(u =&gt; u.Name)
+                .IsUnique();
+            modelBuilder.Entity&lt;Unit&gt;().HasIndex(u =&gt; u.Name)
+                .IsUnique();
+            modelBuilder.Entity&lt;UnitType&gt;()
+                .HasMany(e =&gt; e.Units)
+                .WithOne(e =&gt; e.UnitType)
+                .HasForeignKey(e =&gt; e.UnitTypeId)
+                .IsRequired();
+
+            
+        }
+
+        
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[7,37,7,41,1],[7,42,7,46,1],[9,35,9,39,1],[9,40,9,44,1],[11,43,11,47,1],[11,48,11,52,1],[13,35,13,39,1],[13,40,13,44,1],[15,43,15,47,1],[15,48,15,52,1],[17,55,17,59,1],[17,60,17,64,1],[21,9,21,10,1],[22,13,22,48,1],[23,13,23,68,1],[25,9,25,10,1],[28,9,28,10,1],[30,13,32,29,1],[33,13,35,29,1],[36,13,38,29,1],[39,13,40,29,1],[41,13,42,29,1],[43,13,47,31,1],[50,9,50,10,1]]);
+    </script>
+  </body>
+</html>

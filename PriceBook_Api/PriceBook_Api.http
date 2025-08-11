@@ -1,0 +1,6 @@
+@PriceBook_Api_HostAddress = http://localhost:5020
+
+GET {{PriceBook_Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

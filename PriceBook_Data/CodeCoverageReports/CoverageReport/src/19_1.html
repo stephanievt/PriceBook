@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\dev\PriceBook\PriceBook_Data\Settings.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace PriceBook_Data
+{
+    public class Settings
+    {
+        public Settings()
+        {
+            string fileName = Environment.CurrentDirectory + &quot;\\&quot; + &quot;Settings.txt&quot;;
+            StreamReader reader = new StreamReader(fileName);
+            string wholeFile = reader.ReadToEnd();
+            string[] settingLines = wholeFile.Split(&#39;\n&#39;);
+
+            foreach (string t in settingLines)
+            {
+                if (t.Length == 0) continue; // handle random blank lines within the file.
+                if (t.Substring(0, 1) == &quot;#&quot;)
+                {
+                    continue;
+                } // pound represents a comment
+
+                string[] currentSetting = t.Split(&#39;,&#39;);
+                currentSetting[0] = currentSetting[0].Trim();
+                switch (currentSetting[0])
+                {
+                    case &quot;ConnectionString&quot;:
+                        ConnectionString = currentSetting[1];
+                        break;
+                }
+            }
+
+        }
+
+        public string ConnectionString { get; private set; }
+
+
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[5,9,5,26,1],[6,9,6,10,1],[7,13,7,84,1],[8,13,8,62,1],[9,13,9,51,1],[10,13,10,59,1],[12,13,12,20,1],[12,22,12,30,1],[12,31,12,33,1],[12,34,12,46,1],[13,13,13,14,1],[14,17,14,35,1],[14,36,14,45,1],[15,17,15,46,1],[16,17,16,18,1],[17,21,17,30,1],[20,17,20,56,1],[21,17,21,62,1],[22,17,22,43,1],[25,25,25,62,1],[26,25,26,31,1],[28,13,28,14,1],[30,9,30,10,1],[32,42,32,46,1],[32,47,32,59,1]]);
+    </script>
+  </body>
+</html>

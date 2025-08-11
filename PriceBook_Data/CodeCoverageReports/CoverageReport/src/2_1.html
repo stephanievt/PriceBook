@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Dev\PriceBook\PriceBook_Data\Categories.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections;
+
+namespace PriceBook_Data
+{
+    public class Categories : IEnumerable&lt;Category&gt;
+    {
+
+        private readonly List&lt;Category&gt; _cats = new List&lt;Category&gt;();
+
+
+        public Categories(bool getAll = false)
+        {
+            if (getAll)
+            {
+                using (ApplicationContext context = new ApplicationContext())
+                {
+                    //_cats = context.Category.ToDictionary();
+                    foreach (var category in context.Category)
+                    {
+                        _cats.Add(category);
+                    }
+                }
+
+                foreach (var cat in _cats)
+                {
+                    cat.IsAttached = true;
+                }
+            }
+        }
+
+        public int Count =&gt; _cats.Count;
+
+        public Category this[int i] =&gt; _cats[i];
+
+        public IEnumerator&lt;Category&gt; GetEnumerator()
+        {
+            return _cats.GetEnumerator();
+        }
+
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public List&lt;Category&gt; ToList()
+        {
+            return _cats.ToList();
+        }
+
+        public Category[] ToArray()
+        {
+            return _cats.ToArray();
+        }
+
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,70,1],[11,9,11,47,1],[12,9,12,10,1],[13,13,13,24,1],[14,13,14,14,1],[15,24,15,77,1],[16,17,16,18,1],[18,21,18,28,1],[18,30,18,42,1],[18,43,18,45,1],[18,46,18,62,1],[19,21,19,22,1],[20,25,20,45,1],[21,21,21,22,1],[22,17,22,18,1],[24,17,24,24,1],[24,26,24,33,1],[24,34,24,36,1],[24,37,24,42,1],[25,17,25,18,1],[26,21,26,43,1],[27,17,27,18,1],[28,13,28,14,1],[29,9,29,10,1],[31,29,31,40,1],[33,40,33,48,1],[36,9,36,10,1],[37,13,37,42,1],[38,9,38,10,1],[47,9,47,10,1],[48,13,48,35,1],[49,9,49,10,1],[52,9,52,10,1],[53,13,53,36,1],[54,9,54,10,1]]);
+    </script>
+  </body>
+</html>
