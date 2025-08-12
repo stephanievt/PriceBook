@@ -10,6 +10,7 @@ namespace PriceBook_Api.Controllers
         [HttpGet] 
         public IEnumerable<Category> GetCategories()
         {
+            
             Categories cats = new Categories();
             return cats;
 
