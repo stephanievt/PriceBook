@@ -35,9 +35,9 @@ namespace PriceBook_Data
         public Item(int id)
         {
             ApplicationContext context = new ApplicationContext();
-            Item item;
-            // This is an example of eager loading.
-            item = context.Item.Include(c => c.Category).FirstOrDefault(i => i.Id == id);
+            var item =
+                // This is an example of eager loading.
+                context.Item.Include(c => c.Category).FirstOrDefault(i => i.Id == id);
             
             
             if (item == null) Found = false;

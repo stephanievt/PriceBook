@@ -1,7 +1,8 @@
 ﻿using PriceBook_Data;
+
 // ReSharper disable RedundantAssignment
 
-namespace PriceBook_Test.DataTests
+namespace Test_PriceBook_Data.DataTests
 {
 
     [TestClass]
@@ -11,7 +12,7 @@ namespace PriceBook_Test.DataTests
         [TestMethod]
         public void GetAllCategories()
         {
-            PriceBook_Data.Categories cats = new PriceBook_Data.Categories();
+            Categories cats = new Categories();
             Assert.IsTrue(cats.Count > 0);
             foreach (var cat in cats)
             {

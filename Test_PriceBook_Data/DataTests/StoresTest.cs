@@ -1,6 +1,6 @@
 using PriceBook_Data;
 
-namespace PriceBook_Test.DataTests;
+namespace Test_PriceBook_Data.DataTests;
 
 [TestClass]
 public class StoresTest
@@ -17,7 +17,7 @@ public class StoresTest
     }
 
     [TestMethod]
-    public void StoresFromDB()
+    public void StoresFromDb()
     {
         Stores stores = new Stores(true);
         Assert.IsTrue(stores.Count > 0);

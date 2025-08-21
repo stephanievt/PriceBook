@@ -1,8 +1,9 @@
 using PriceBook_Data;
 using SgUtil;
+
 // ReSharper disable ReplaceWithSingleAssignment.True
 
-namespace PriceBook_Test.DataTests;
+namespace Test_PriceBook_Data.DataTests;
 
 [TestClass]
 public class ItemTest

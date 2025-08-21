@@ -1,7 +1,7 @@
 ﻿using PriceBook_Data;
 using SgUtil;
 
-namespace PriceBook_Test.DataTests
+namespace Test_PriceBook_Data.DataTests
 {
     /// <summary>
     /// This class is used in TESTS to get an desired entity for the test only when

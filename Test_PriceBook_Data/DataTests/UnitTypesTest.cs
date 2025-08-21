@@ -1,4 +1,4 @@
-namespace PriceBook_Test.DataTests;
+namespace Test_PriceBook_Data.DataTests;
 
 [TestClass]
 public class UnitTypesTest
