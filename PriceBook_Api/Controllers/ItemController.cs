@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PriceBook_Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,9 +13,10 @@ namespace PriceBook_Api.Controllers
 
         // GET api/<ItemController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Item Get(int id)
         {
-            return "value";
+            Item item = new Item(id);
+            return item;
         }
 
         // POST api/<ItemController>

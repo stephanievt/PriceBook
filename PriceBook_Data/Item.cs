@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace PriceBook_Data
@@ -12,6 +13,7 @@ namespace PriceBook_Data
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
+        [JsonIgnore]
         public Category Category { get; set; }
 
         [MaxLength(50)]
@@ -19,6 +21,7 @@ namespace PriceBook_Data
 
 
         [NotMapped]
+        [JsonIgnore]
         public bool Found { get; set; }
 
         public Item()
