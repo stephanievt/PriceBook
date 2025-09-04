@@ -12,7 +12,7 @@ using PriceBook_Data;
 namespace PriceBook_Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250821181152_CreateDb")]
+    [Migration("20250904191249_CreateDb")]
     partial class CreateDb
     {
         /// <inheritdoc />

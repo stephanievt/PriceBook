@@ -14,7 +14,7 @@
 
         }
 
-        public string ConnectionString { get; set; } = @"Server=NA1CTXUSERDEV04\\SQLEXPRESS;Database=PriceBook;TrustServerCertificate=True;Trusted_Connection=True";
+        public string ConnectionString { get; set; } = "Server=DESKTOP-BNDNPK0\\SQLEXPRESS;Database=PriceBook;TrustServerCertificate=True;Trusted_Connection=True";
 
     }
 }
