@@ -44,9 +44,8 @@ namespace PriceBook_Data
         public ItemCostRecord(int id)
         {
             ApplicationContext context = new ApplicationContext();
-            ItemCostRecord cr;
 
-            cr = context.ItemCostRecord.FirstOrDefault(i => i.Id == id);
+            ItemCostRecord cr = context.ItemCostRecord.FirstOrDefault(i => i.Id == id);
 
 
             if (cr == null)

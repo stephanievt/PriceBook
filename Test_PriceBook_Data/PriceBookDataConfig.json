@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Server=DESKTOP-BNDNPK0\\SQLEXPRESS;Database=PriceBook;TrustServerCertificate=True;Trusted_Connection=True"
+}

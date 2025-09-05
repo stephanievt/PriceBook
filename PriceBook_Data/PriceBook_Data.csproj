@@ -39,7 +39,7 @@
     <None Update="DefaultData\UnitTypes.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Settings.txt">
+    <None Update="PriceBookDataConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

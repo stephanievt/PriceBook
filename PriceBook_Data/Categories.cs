@@ -13,16 +13,7 @@ namespace PriceBook_Data
         {
             using (ApplicationContext context = new ApplicationContext())
             {
-
-                if (includeItems)
-                {
-                    _cats = context.Category.Include(c => c.Items).ToList();
-                }
-                else
-                {
-                    _cats = context.Category.ToList();
-                }
-                
+                _cats = includeItems ? context.Category.Include(c => c.Items).ToList() : context.Category.ToList();
             }
 
             foreach (var cat in _cats)

@@ -19,8 +19,8 @@ namespace PriceBook_Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Settings settings = new Settings();
-            optionsBuilder.UseSqlServer(settings.ConnectionString);
+            PriceBookDataConfig priceBookDataConfig = new PriceBookDataConfig();
+            optionsBuilder.UseSqlServer(priceBookDataConfig.ConnectionString);
 
         }
 

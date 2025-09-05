@@ -12,8 +12,8 @@ using PriceBook_Data;
 namespace PriceBook_Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250811114720_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20250904191249_CreateDb")]
+    partial class CreateDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

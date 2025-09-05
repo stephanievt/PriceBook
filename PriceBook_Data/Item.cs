@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace PriceBook_Data
@@ -12,6 +13,7 @@ namespace PriceBook_Data
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
+        [JsonIgnore]
         public Category Category { get; set; }
 
         [MaxLength(50)]
@@ -19,6 +21,7 @@ namespace PriceBook_Data
 
 
         [NotMapped]
+        [JsonIgnore]
         public bool Found { get; set; }
 
         public Item()
@@ -35,9 +38,9 @@ namespace PriceBook_Data
         public Item(int id)
         {
             ApplicationContext context = new ApplicationContext();
-            Item item;
-            // This is an example of eager loading.
-            item = context.Item.Include(c => c.Category).FirstOrDefault(i => i.Id == id);
+            var item =
+                // This is an example of eager loading.
+                context.Item.Include(c => c.Category).FirstOrDefault(i => i.Id == id);
             
             
             if (item == null) Found = false;
