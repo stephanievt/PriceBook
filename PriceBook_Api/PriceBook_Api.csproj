@@ -24,10 +24,4 @@
     <ProjectReference Include="..\PriceBook_Data\PriceBook_Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Settings.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

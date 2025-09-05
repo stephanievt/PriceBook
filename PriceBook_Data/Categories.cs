@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PriceBook_Data
 {
-    public class Categories : IEnumerable<Category>
+    public class Categories : IEnumerable<Category>, ICategories
     {
 
         private readonly List<Category> _cats;
@@ -21,7 +21,6 @@ namespace PriceBook_Data
                 cat.IsAttached = true;
             }
         }
-
 
         public int Count => _cats.Count;
 
