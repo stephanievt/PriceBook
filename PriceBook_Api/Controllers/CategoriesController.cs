@@ -8,7 +8,7 @@ namespace PriceBook_Api.Controllers
     public class CategoriesController : ControllerBase
     {
         [HttpGet] 
-        public IEnumerable<Category> GetCategories()
+        public Categories GetCategories()
         {
             
             Categories cats = new Categories();

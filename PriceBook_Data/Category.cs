@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PriceBook_Data
 {
-    
     public class Category
     {
 
@@ -19,10 +18,11 @@ namespace PriceBook_Data
         [MaxLength(70)]
         public string Name { get; set; }
 
-        [JsonIgnore]
+        
         [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
         public List<Item> Items { get; set; }
 
+        public bool Watch { get; set; }
         
         [NotMapped]
         [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
@@ -84,6 +84,7 @@ namespace PriceBook_Data
         {
             if (this.Id != compare.Id) return false;
             if (this.Name != compare.Name) return false;
+            if (this.Watch != compare.Watch) return false;
             return true;
         }
 

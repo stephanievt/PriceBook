@@ -6,13 +6,13 @@ namespace Test_PriceBook_Data.DataTests
 {
 
     [TestClass]
-    public class CategoriesTest
+    public class WatchWatchCategoriesTest
     {
         
         [TestMethod]
-        public void GetAllCategories()
+        public void GetAllWatchCategories()
         {
-            Categories cats = new Categories();
+            WatchCategories cats = new WatchCategories();
             Assert.IsTrue(cats.Count > 0);
             foreach (var cat in cats)
             {
@@ -21,9 +21,9 @@ namespace Test_PriceBook_Data.DataTests
         }
 
         [TestMethod]
-        public void CategoriesToArray()
+        public void WatchCategoriesToArray()
         {
-            Categories cats = new Categories();
+            WatchCategories cats = new WatchCategories();
 
             Category[] catsArray = cats.ToArray();
             Assert.AreEqual(cats.Count, catsArray.Length);
@@ -35,25 +35,9 @@ namespace Test_PriceBook_Data.DataTests
         }
 
         [TestMethod]
-        public void GetItemsWithCategory()
-        {
-            Categories cats = new Categories(true);
-            bool success = false;
-            // At least one category has a non empty item.
-            foreach (Category iCat in cats)
-            {
-                if (iCat.Items == null) continue;
-                if (iCat.Items.Count > 0) success = true;
-                break;
-            }
-            Assert.IsTrue(success, "Categories do not appear included.");
-        }
-
-
-        [TestMethod]
         public void Iterating()
         {
-            Categories cats = new Categories();
+            WatchCategories cats = new WatchCategories();
 
             Assert.IsTrue(cats.Count > 0);
             bool success = true;

@@ -46,7 +46,8 @@ namespace PriceBook_Data
                 .HasForeignKey(e => e.UnitTypeId)
                 .IsRequired();
 
-            
+            // Adding Watch feature on category
+            modelBuilder.Entity<Category>().HasIndex(c => new { c.Watch, c.Name });
         }
 
         

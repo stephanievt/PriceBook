@@ -18,7 +18,8 @@ public class CategoryTest
         // Add category
         Category catAdd = new Category
         {
-            Name = categoryName
+            Name = categoryName,
+            Watch = false
         };
         catAdd.Add();
 
